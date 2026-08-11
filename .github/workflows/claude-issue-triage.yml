@@ -1,0 +1,41 @@
+name: Claude Issue Triage
+
+on:
+  issues:
+    types: [opened, edited]
+
+jobs:
+  triage:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+      pull-requests: read
+      id-token: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Run Claude Issue Triage
+        id: claude-triage
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          claude_args: '--allowed-tools "Bash(gh issue edit:*),Bash(gh issue view:*),Bash(gh label list:*),Bash(gh issue comment:*)"'
+          prompt: |
+            Analiza el issue #${{ github.event.issue.number }} de este repositorio (Tetris en JavaScript vanilla, ver CLAUDE.md para la arquitectura de game.js).
+
+            Pasos:
+            1. Lee el issue con `gh issue view ${{ github.event.issue.number }}` (título y cuerpo).
+            2. Revisa los labels disponibles con `gh label list` y elige los que apliquen de esa lista existente (bug, enhancement, documentation, question, duplicate, invalid, help wanted, good first issue, wontfix). No crees labels nuevos.
+            3. Aplica los labels elegidos con `gh issue edit ${{ github.event.issue.number }} --add-label "<label1>,<label2>"`. Si el issue ya tiene labels que ya no aplican, quítalos con `--remove-label`.
+            4. Publica un comentario nuevo en el issue (`gh issue comment ${{ github.event.issue.number }} --body "..."`) con un diagnóstico general que incluya:
+               - Resumen breve del problema en 1-2 líneas.
+               - Causa probable, referenciando funciones/variables concretas de game.js cuando aplique (por ejemplo `collide`, `tryRotate`, `lockPiece`, `clearLines`, `spawn`, `loop`, `draw`/`drawBlock`, según corresponda).
+               - Archivos y zonas del código afectadas (game.js, index.html, style.css).
+               - Pasos sugeridos de alto nivel para la solución (sin implementarla todavía).
+               - Si el issue no tiene información suficiente para diagnosticar, indícalo explícitamente y pide los datos que faltan (pasos para reproducir, navegador, etc.) en vez de inventar una causa.
+
+            No modifiques el código ni abras un PR en este workflow: solo labels y el comentario de diagnóstico.
