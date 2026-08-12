@@ -38,4 +38,6 @@ jobs:
                - Pasos sugeridos de alto nivel para la solución (sin implementarla todavía).
                - Si el issue no tiene información suficiente para diagnosticar, indícalo explícitamente y pide los datos que faltan (pasos para reproducir, navegador, etc.) en vez de inventar una causa.
 
+               El comentario debe estar escrito en formato Markdown válido para GitHub (encabezados, listas, bloques de código con ``` y nombres de funciones/variables entre backticks, etc.).
+
             No modifiques el código ni abras un PR en este workflow: solo labels y el comentario de diagnóstico.
