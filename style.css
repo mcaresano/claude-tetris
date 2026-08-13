@@ -122,6 +122,35 @@ body {
   transform: translateX(20px);
 }
 
+body.skin-neon {
+  --board-bg: #000000;
+  --grid-color: #111;
+  --bg: #050505;
+  --fg: #e0e0e0;
+  --label-color: #555570;
+  --control-color: #888;
+}
+body.skin-pastel {
+  --board-bg: #fdfaf6;
+  --grid-color: #ece3da;
+}
+body.skin-pixel {
+  --board-bg: #1a1a25;
+}
+
+/* ---- Skin select ---- */
+.skin-select {
+  height: 24px;
+  background: var(--kbd-bg);
+  border: 1px solid var(--kbd-border);
+  color: var(--fg);
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 12px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
 .game-container {
   display: flex;
   gap: 20px;
