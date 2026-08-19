@@ -122,6 +122,38 @@ body {
   transform: translateX(20px);
 }
 
+/* ---- Skin select ---- */
+.skin-select {
+  background: var(--kbd-bg);
+  color: var(--kbd-color);
+  border: 1px solid var(--kbd-border);
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* ---- Skins ---- */
+body.skin-neon #board,
+body.skin-neon #next-canvas {
+  background: #000000;
+  border-color: #0ff5ff;
+  box-shadow: 0 0 30px rgba(0, 245, 255, 0.35), 0 0 60px rgba(0, 245, 255, 0.15);
+  --grid-color: #0a2a30;
+}
+
+body.skin-pastel #board,
+body.skin-pastel #next-canvas {
+  border-radius: 16px;
+}
+
+body.skin-pixel #board,
+body.skin-pixel #next-canvas {
+  border-radius: 0;
+  image-rendering: pixelated;
+}
+
 .game-container {
   display: flex;
   gap: 20px;
@@ -251,5 +283,198 @@ kbd {
 }
 
 #restart-btn:hover {
+  background: var(--btn-hover-bg);
+}
+
+/* ---- Pause menu ---- */
+.pause-box {
+  width: 220px;
+}
+
+.pause-title {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: 4px;
+  color: var(--overlay-score-color);
+}
+
+.pause-view {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: stretch;
+  width: 100%;
+}
+
+.pause-view.hidden {
+  display: none;
+}
+
+.menu-btn {
+  background: var(--btn-bg);
+  color: var(--btn-color);
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: background 0.15s;
+}
+
+.menu-btn:hover {
+  background: var(--btn-hover-bg);
+}
+
+.level-select-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--control-color);
+}
+
+.level-select-row select {
+  background: var(--kbd-bg);
+  border: 1px solid var(--kbd-border);
+  color: var(--fg);
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 13px;
+}
+
+.pause-controls-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.pause-controls-list li {
+  font-size: 12px;
+  color: var(--control-color);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ---- Records ---- */
+.records-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.records-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 12px;
+  color: var(--control-color);
+}
+
+.records-list .record-name {
+  letter-spacing: 1px;
+}
+
+.records-list .record-score {
+  color: var(--value-color);
+}
+
+.records-list .records-empty {
+  justify-content: center;
+  font-style: italic;
+}
+
+.records-list .record-highlight {
+  color: var(--overlay-title-color);
+  font-weight: 700;
+}
+
+.records-list .record-highlight .record-score {
+  color: var(--overlay-title-color);
+}
+
+.records-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 11px;
+  color: var(--control-color);
+}
+
+.records-stats strong {
+  color: var(--value-color);
+}
+
+.reset-btn {
+  align-self: flex-start;
+  background: none;
+  border: 1px solid var(--board-border);
+  color: var(--control-color);
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-size: 11px;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.reset-btn:hover {
+  border-color: var(--overlay-title-color);
+  color: var(--overlay-title-color);
+}
+
+.overlay-records {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 200px;
+}
+
+.new-record-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+.new-record-form.hidden {
+  display: none;
+}
+
+.new-record-label {
+  font-size: 12px;
+  color: var(--overlay-title-color);
+  font-weight: 600;
+}
+
+#player-name {
+  background: var(--kbd-bg);
+  border: 1px solid var(--kbd-border);
+  border-radius: 4px;
+  padding: 6px 10px;
+  font-size: 13px;
+  color: var(--fg);
+  text-align: center;
+  width: 140px;
+}
+
+#save-record-btn {
+  background: var(--btn-bg);
+  color: var(--btn-color);
+  border: none;
+  border-radius: 6px;
+  padding: 6px 20px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+#save-record-btn:hover {
   background: var(--btn-hover-bg);
 }

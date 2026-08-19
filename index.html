@@ -10,6 +10,12 @@
   <div class="wrapper">
     <div class="header-row">
       <h1 class="game-title">TETRIS</h1>
+      <select id="skin-select" class="skin-select" aria-label="Elegir skin visual">
+        <option value="retro">Retro</option>
+        <option value="neon">Neon</option>
+        <option value="pastel">Pastel</option>
+        <option value="pixel">Pixel Art</option>
+      </select>
       <label class="theme-toggle" for="theme-toggle" aria-label="Cambiar entre tema claro y oscuro">
         <input type="checkbox" id="theme-toggle" />
         <span class="theme-toggle-slider"></span>
@@ -44,8 +50,18 @@
             <li><kbd>↑</kbd> rotar</li>
             <li><kbd>↓</kbd> bajar</li>
             <li><kbd>Space</kbd> caída</li>
-            <li><kbd>P</kbd> pausa</li>
+            <li><kbd>P</kbd> / <kbd>Esc</kbd> pausa</li>
           </ul>
+        </div>
+
+        <div class="panel-section records-panel">
+          <span class="label">RECORDS</span>
+          <ol id="records-list" class="records-list"></ol>
+          <div class="records-stats">
+            <span>Mejor combo: <strong id="best-combo">-</strong></span>
+            <span>Líneas máx: <strong id="best-lines">-</strong></span>
+          </div>
+          <button id="reset-records-btn" class="reset-btn">Resetear records</button>
         </div>
       </aside>
     </div>
@@ -54,7 +70,57 @@
       <div class="overlay-box">
         <p id="overlay-title">GAME OVER</p>
         <p id="overlay-score"></p>
+
+        <div id="new-record-form" class="new-record-form hidden">
+          <p class="new-record-label">¡Nuevo record! Ingresá tu nombre:</p>
+          <input type="text" id="player-name" maxlength="10" placeholder="Tu nombre" autocomplete="off" />
+          <button id="save-record-btn">Guardar</button>
+        </div>
+
+        <div class="overlay-records">
+          <span class="label">TOP 5</span>
+          <ol id="overlay-records-list" class="records-list"></ol>
+        </div>
+
         <button id="restart-btn">Reiniciar</button>
+      </div>
+    </div>
+
+    <div id="pause-menu" class="overlay hidden">
+      <div class="overlay-box pause-box">
+        <p class="pause-title">PAUSA</p>
+
+        <div id="pause-main" class="pause-view">
+          <button id="resume-btn" class="menu-btn">Reanudar</button>
+          <button id="pause-restart-btn" class="menu-btn">Reiniciar</button>
+          <button id="controls-btn" class="menu-btn">Ver controles</button>
+          <div class="level-select-row">
+            <label for="start-level-select">Nivel inicial</label>
+            <select id="start-level-select">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="pause-controls" class="pause-view hidden">
+          <ul class="pause-controls-list">
+            <li><kbd>←</kbd><kbd>→</kbd> mover</li>
+            <li><kbd>↑</kbd> rotar</li>
+            <li><kbd>↓</kbd> bajar</li>
+            <li><kbd>Space</kbd> caída</li>
+            <li><kbd>P</kbd> / <kbd>Esc</kbd> pausa</li>
+          </ul>
+          <button id="back-btn" class="menu-btn">Volver</button>
+        </div>
       </div>
     </div>
   </div>
