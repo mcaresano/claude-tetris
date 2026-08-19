@@ -253,3 +253,122 @@ kbd {
 #restart-btn:hover {
   background: var(--btn-hover-bg);
 }
+
+/* ---- Records ---- */
+.records-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.records-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 12px;
+  color: var(--control-color);
+}
+
+.records-list .record-name {
+  letter-spacing: 1px;
+}
+
+.records-list .record-score {
+  color: var(--value-color);
+}
+
+.records-list .records-empty {
+  justify-content: center;
+  font-style: italic;
+}
+
+.records-list .record-highlight {
+  color: var(--overlay-title-color);
+  font-weight: 700;
+}
+
+.records-list .record-highlight .record-score {
+  color: var(--overlay-title-color);
+}
+
+.records-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 11px;
+  color: var(--control-color);
+}
+
+.records-stats strong {
+  color: var(--value-color);
+}
+
+.reset-btn {
+  align-self: flex-start;
+  background: none;
+  border: 1px solid var(--board-border);
+  color: var(--control-color);
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-size: 11px;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.reset-btn:hover {
+  border-color: var(--overlay-title-color);
+  color: var(--overlay-title-color);
+}
+
+.overlay-records {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 200px;
+}
+
+.new-record-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+.new-record-form.hidden {
+  display: none;
+}
+
+.new-record-label {
+  font-size: 12px;
+  color: var(--overlay-title-color);
+  font-weight: 600;
+}
+
+#player-name {
+  background: var(--kbd-bg);
+  border: 1px solid var(--kbd-border);
+  border-radius: 4px;
+  padding: 6px 10px;
+  font-size: 13px;
+  color: var(--fg);
+  text-align: center;
+  width: 140px;
+}
+
+#save-record-btn {
+  background: var(--btn-bg);
+  color: var(--btn-color);
+  border: none;
+  border-radius: 6px;
+  padding: 6px 20px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+#save-record-btn:hover {
+  background: var(--btn-hover-bg);
+}
